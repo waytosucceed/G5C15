@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class Activity1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="wts.css">
+  <link rel="icon" type="image/x-icon" href="Logo_last.png">
+</head>
+<body>
+  <audio id="cheers" >
+    <source src="cheers.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="points" src="Points.mp3"></audio>
+  <audio id="fail" src="fail.mp3"></audio>
+<div class="header" style="width:100%; background-color:rgba(255, 255, 255, 0)">
+   <img src="Logo.png" width="12%" style="float:left; margin-top:10px" class="img-responsive">
+   <span> <img src="header.png" width="50%" height="100px"; class="img-responsive"></span>
+</div>
+<br>
+<br>
+  <center>
+  <h1 id="heading">Solid Shapes</h1>
+  <div class="maindiv container">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 imgdiv">
+      <img id ="math_ques" src="MAth Question.jpg" width="100%">
+    </div>
+  <div id="questiondiv" class="col-lg-7 col-md-7 col-sm-7 col-xs-8">
+    <div id="question"></div>
+    <br><br><br>
+  <div class="menu"><br><ul id="options"></ul></div>
+  <button id="subbtn" class="btn btn-success" onclick="checkAnswer()">Submit Answer</button>
+  <button id="nextbtn" class="btn btn-primary" onclick="newques()" style="display:none">Next</button>
+  <p id="result"></p>
+  </div>
+</div>
+  <script>
+    // Define an array of questions and their options
+    var questions = [
+    
+    {
+      question: "Q 1. Lily and Zorg are solving a math problem: 6+4✕2. What is the answer?",
+      options: ["16", "14", "12", "10"],
+      answer: "14"
+    },
+
+    {
+      question: "Q 2. Zorg is curious to know how to solve the expression 24 ÷ (6 - 3). What is the result?",
+
+      options: ["8", "6", "4", "2"],
+      answer: "8"
+    },
+
+    {
+      question: "Q 3. What is the value of 12−(4+3)✕2? ",
+      options: ["-4", "-6", "-2", "2"],
+      answer: "-2"
+    },
+
+    
+    {
+      question: "Q 4. In their exploration of Mathopolis, Lily and Zorg encounter a mathematical challenge. What is the solution to the expression 15 ÷ 3 + 2 ✕ 4? ",
+
+      options: ["8", "9", "12", "13"],
+      answer: "13"
+    },
+
+    {
+      question: "Q 5. Solve the expression 27÷3+2✕6-7.",
+
+      options: ["59", "14", "27", "13"],
+      answer: "14"
+    },
+
+    {
+      question: "Q 6. 75÷ (3 ✕ 5) + 3² equals.",
+
+      options: ["20.6", "14", "134", "13"],
+      answer: "14"
+    },
+
+      {
+        question: "Q 7. In the vibrant streets of Mathopolis, Lily and Zorg engage in another mathematical puzzle. What is the value of the expression 20−36÷(2✕3)²? ",
+
+        options: ["142", "19", "-142", "-4/9"],
+        answer: "19"
+      },
+
+      {
+        question: "Q 8. What is the value of 10×2²+5²?",
+
+        options: ["65", "40", "45", "50"],
+        answer: "65"
+      },
+
+      {
+        question: "Q 9. Lily and Zorg are tackling another math problem together. What are the two missing numbers in the expression could be? ",
+
+        options: ["6 and 10", "2 and 10","4 and 10","3 and 10"],
+
+
+        answer: "3 and 10"
+      },
+
+      {
+        question: "Q 10. Complete the boxes to make the statement correct.",
+
+        options: ["2", "3", "4", "5" ],
+        answer: "3"
+      },
+
+      {
+        question: "Q 11. How many chocolates does Lily have before distributing them?",
+
+
+        options: ["18", "9", "15", "19" ],
+        answer: "18"
+      },
+
+      {
+        question: "Q 12. How many chocolates does she have left after distributing them?",
+
+
+        options: ["18", "2", "1", "0"],
+        answer: "2"
+      },
+      {
+        question: "Q 13. Lily bought 15 books for $5 each and 10 pencils for $1 each. If she paid with a $100 bill, how much change does she receive?",
+
+        options: ["$15", "$20", "$25", "$30"],
+        answer: "$15"
+      },
+
+      {
+        question: "Q 14. Zorg wants to buy 4 toys that cost $7 each and 3 games that cost $10 each. How much will Zorg spend in total?",
+
+        options: ["$36", "$310", "$46", "$58"],
+        answer: "$58"
+      },
+
+      {
+        question: "Q 15. Mary, a friend of Lily has $50. She spends $12 on groceries and $8 on stationery. How much money does she have left?",
+        options: ["$30", "$32", "$34", "$38"],
+        answer: "$30"
+      },
+
+      {
+        question: "Q 16. Zorg wants to buy 4 toys for $7 each, 2 packs of batteries for $4 each, and sells 3 old games for $10 each. What is the net amount Zorg spends or earns?",
+
+        options: ["Spends $6"," Earns $6","Spends $34", "Earns $34"],
+        answer: "Spends $6"
+      },
+
+      {
+        question: "Q 17. Mary had 30 cookies. She gave away 10 cookies to her friends, received 15 cookies as a gift, and bought 20 more cookies. How many cookies does she have now?",
+
+        options: ["45", "55", "65", "75" ],
+        answer: "55"
+      },
+
+      {
+        question: "Q 18. Lily bought 2 packs of pencils for $2 each, 3 notebooks for $5 each, and sold 4 markers for $20 each. After spending and earning, she divides the remaining money equally among her 2 siblings. How much money does each sibling receive?",
+
+        options: ["$36", "$31", "$61", "$30.50" ],
+        answer: "$30.50"
+      },
+
+      {
+        question: "Q 19. Lily has 24 marbles. She gives 8 marbles to her sister, receives 10 marbles from her friend, and buys 15 more marbles. She then divides the total number of marbles equally among her 5 cousins. How many marbles does each cousin receive?",
+
+        options: ["6", "7", "8", "9" ],
+        answer: "8"
+      },
+
+      {
+        question: "Q 20. Lily and Zorg are setting up a communication system for their space station. They need to power the communication modules using batteries. Each communication module requires 2 batteries to operate. They have 4 communication modules in total.If each battery has a power capacity of 33 joules, how much total energy (in joules) will be required to power all the communication modules?",
+
+
+        options: ["312 joules", " 216 joules","310 joules","263 joules"],
+        answer: " 216 joules"
+      },
+
+      {
+        question: "Q 21. Lily and Zorg are working on a project to build a model rocket. They need to calculate the total number of small rocket boosters required to launch their rocket successfully. Each booster can lift 52 kilograms of weight.If their rocket weighs 53  kilograms and they want to ensure it can launch smoothly, how many boosters do they need?",
+
+
+        options: ["5 boosters","150 boosters", "25 boosters", "125 boosters"],
+        answer: "5 boosters"
+      }, 
+
+     
+
+
+   
+
+
+      
+      // Add more questions here
+    ];
+
+    //define the array of images
+
+    var img= ["Assets/1.jpg","Assets/2.jpg","Assets/3.jpg","Assets/4.jpg","Assets/5.jpg","Assets/6.jpg","Assets/7.jpg","Assets/8.jpg","Assets/9.jpg","Assets/10.jpg","Assets/11.jpg","Assets/12.jpg","Assets/13.jpg","Assets/14.jpg","Assets/15.jpg","Assets/16.jpg","Assets/17.jpg","Assets/18.jpg","Assets/19.jpg","Assets/20.jpg","Assets/21.jpg"]
+    
+    // Get a random question from the array
+
+    var randomQuestion = questions[0];
+    var updatedimage = img[0]
+    document.getElementById("math_ques").src = updatedimage
+    document.getElementById("question").innerHTML = randomQuestion.question;
+    
+    randomQuestion.options.forEach(function(option) {
+      var li = document.createElement("li");
+      li.innerHTML = '<input type="radio" name="answer" value="' + option + '"> ' + option;
+      document.getElementById("options").appendChild(li);
+    });
+
+// Create a function here like family array project of Byjus to display next question \
+    // from array everytime instead of random question
+    var i=1;
+    var count=questions.length
+    function newques(){
+      if(i==count){
+        document.getElementById("heading").innerHTML = "Thank You...."
+        document.getElementById("math_ques").src = "last.jpg"
+        document.getElementById("question").innerHTML=""
+        document.getElementById("options").innerHTML="Well Done"
+        document.getElementById("cheers").play()
+        document.getElementById("result").innerHTML ="Click on the next button on the top right corner to practice more"
+      document.getElementById("nextbtn").style.display="none"
+      }
+      else{
+
+      document.getElementById("options").innerHTML=""
+      document.getElementById("result").innerHTML =""
+      
+  
+      updatedimage= img[i]
+      document.getElementById("math_ques").src = updatedimage
+
+// Display the question and options on the page
+      randomQuestion = questions[i];    
+    document.getElementById("question").innerHTML = randomQuestion.question;
+    
+    
+    randomQuestion.options.forEach(function(option) {
+      var li = document.createElement("li");
+      li.innerHTML = '<input type="radio" name="answer" value="' + option + '"> ' + option;
+      document.getElementById("options").appendChild(li);
+    });
+    document.getElementById("subbtn").style.display="inline-block"
+        document.getElementById("nextbtn").style.display="none"
+
+    i++;
+    }
+  }
+    
+    
+    // Check the selected answer against the correct answer
+    function checkAnswer() {
+      var selectedAnswer = document.querySelector('input[name="answer"]:checked').value;
+      if (selectedAnswer === randomQuestion.answer) {
+        document.getElementById("result").innerHTML = "Correct! &#128512" ;
+        document.getElementById("points").play();
+        document.getElementById("subbtn").style.display="none"
+        document.getElementById("nextbtn").style.display="inline-block"
+      } else {
+        document.getElementById("result").innerHTML = "Incorrect! &#128542";
+        document.getElementById("fail").play();
+      }
+    }
+  </script>
+</center>
+</body>
+</html>
